@@ -66,7 +66,7 @@
 
             <!--SearchBar Starts-->
 
-            <form class="form-inline  " novalidate method="GET">
+            <form class="form-inline" novalidate method="GET">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div class="dropdown">
@@ -163,27 +163,39 @@
         </div>
     </nav><!-- NavBar Ends-->
 
-    <!--LoginForm Starts-->
+    <!--LoginFormCards Starts-->
 
     <div class="container mb-5">
         <div class="card mx-auto pb-3 shadow rounded" style="width: 25rem; margin-top: 100px;">
             <div class="card-body">
                 <h3 class="card-title font-weight-bold">Login</h3>
                 <!--LoginForm Starts-->
-                <form novalidate>
+                <form class="needs-validation" method="POST" action="#" novalidate>
                     <div class="form-group">
                         <label for="userEmail">Email: </label>
-                        <input type="email" class="form-control" id="userEmail" placeholder="abc@abc.com"
+                        <input type="email" required class="form-control" id="userEmail" placeholder="abc@abc.com"
                             aria-describedby="emailHelp" name="email">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                             else.</small>
+                            <div class="valid-feedback">
+                                <i class="fas fa-thumbs-up"></i>  OK
+                              </div>
+                              <div class="invalid-feedback">
+                                <i class="fas fa-exclamation-triangle"></i>  Some Error in Email
+                              </div>
                     </div>
                     <div class="form-group">
                         <label for="userPassword">Password: </label>
-                        <input type="password" class="form-control" id="userPassword" name="password"
+                        <input type="password" required minlength ="3" class="form-control" id="userPassword" name="password"
                             aria-describedby="passwordHelp">
                         <small id="passwordHelp" class="form-text text-muted">Password should be 6 characters Long.
                         </small>
+                        <div class="valid-feedback">
+                            <i class="fas fa-thumbs-up"></i>  Ok
+                          </div>
+                          <div class="invalid-feedback">
+                            <i class="fas fa-exclamation-triangle"></i>  Some Error in Password
+                          </div>
                     </div>
 
                     <button type="submit" class="btn btn-warning w-100 shadow btn-sm rounded ">Submit</button>
@@ -224,6 +236,26 @@
     <script src="js/bootstrap-drawer.min.js"></script>
     <!-- Custom JS -->
     <script src="js/custom.js"></script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+          'use strict';
+          window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+        </script>
 </body>
 
 </html>
