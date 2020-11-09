@@ -36,10 +36,10 @@
             <div class="drawer-content drawer-content-scrollable" role="document">
                 <div class="drawer-header bg-dark text-white">
                     <h4 class="drawer-title mx-auto" id="drawer-demo-title"><i class="fas fa-user-circle"></i>
-                    Hello, Signin</h4>
+                        Hello, Signin</h4>
                 </div>
                 <div class="drawer-body text-uppercase">
-                   <h6>Help & Settings</h6>
+                    <h6>Help & Settings</h6>
                     <a href="#" class="btn btn-outline-success btn-sm my-2">
                         Your Account
                     </a>
@@ -47,10 +47,11 @@
                         Signin
                     </a>
                 </div>
-                <div class="drawer-footer"><button type="button" class="btn btn-outline-danger" data-dismiss="drawer" aria-label="Close">
-                    <i class="fas fa-window-close"></i>
-                </button>
-            </div>
+                <div class="drawer-footer"><button type="button" class="btn btn-outline-danger" data-dismiss="drawer"
+                        aria-label="Close">
+                        <i class="fas fa-window-close"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -136,7 +137,7 @@
 
                 <!--User Accounts Starts-->
                 <li class="nav-item dropdown px-2">
-                    <a class="nav-link" href="#" id="UserAccount" role="button" data-toggle="dropdown"
+                    <a class="nav-link" href="register.html" id="UserAccount" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <i class="fas text-warning fa-2x fa-user" style="padding-top: 7px;"></i>
                     </a>
@@ -170,33 +171,60 @@
             <div class="card-body">
                 <h3 class="card-title font-weight-bold">Regsiter</h3>
                 <!--LoginForm Starts-->
-                <form novalidate>
+                <form class="needs-validation" method="POST" action="#" novalidate>
                     <div class="form-group">
                         <label for="userEmail">Your Name: </label>
-                        <input type="text" class="form-control" id="userName" placeholder="abc"
+                        <input type="text" required minlength="3" class="form-control" id="userName" placeholder="abc"
                             name="userName">
-                       
+                        <div class="valid-feedback">
+                            <i class="fas fa-thumbs-up"></i> OK
+                        </div>
+                        <div class="invalid-feedback">
+                            <i class="fas fa-exclamation-triangle"></i> Some Error in YourName
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="userEmail">Email: </label>
-                        <input type="email" class="form-control" id="userEmail" placeholder="abc@abc.com"
+                        <input type="email" required class="form-control" id="userEmail" placeholder="abc@abc.com"
                             aria-describedby="emailHelp" name="email">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                             else.</small>
+                        <div class="valid-feedback">
+                            <i class="fas fa-thumbs-up"></i> Email is OK
+                        </div>
+                        <div class="invalid-feedback">
+                            <i class="fas fa-exclamation-triangle"></i> Some Error in Your Email
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="userPassword">Password: </label>
-                        <input type="password" class="form-control" id="userPassword" name="password"
-                            aria-describedby="passwordHelp">
-                        <small id="passwordHelp" class="form-text text-muted"> <i class="fas fa-info text-primary"></i> Password should be 6 characters Long.
+                        <label for="userPass
+                        aria-describedby=" passwordHelp">Password: </label>
+                        <input type="password" required minlength="1" class="form-control" id="userPassword"
+                            name="password">
+
+                        <small id="passwordHelp" class="form-text text-muted"> <i class="fas fa-info text-primary"></i>
+                            Password should be 1 character Long.
                         </small>
+                        <div class="valid-feedback">
+                            <i class="fas fa-thumbs-up"></i> OK
+                        </div>
+                        <div class="invalid-feedback">
+                            <i class="fas fa-exclamation-triangle"></i> Some Error in Your Password
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="userPassword2">Confirm Password: </label>
-                        <input type="password" class="form-control" id="userPassword" name="password2"
+                        <input type="password" required class="form-control" id="userPassword" name="password2"
                             aria-describedby="passwordHelp2">
-                        <small id="passwordHelp2" class="form-text text-muted"><i class="fas fa-info text-primary"></i> Your Passwordsd should be exact the Same.
+                        <small id="passwordHelp2" class="form-text text-muted"><i class="fas fa-info text-primary"></i>
+                            Your Passwordsd should be exact the Same.
                         </small>
+                        <div class="valid-feedback">
+                            <i class="fas fa-thumbs-up"></i> Your Psswords were OK
+                        </div>
+                        <div class="invalid-feedback">
+                            <i class="fas fa-exclamation-triangle"></i> Some Error in Your Password
+                        </div>
                     </div>
 
                     <button type="submit" class="btn btn-warning w-100 shadow btn-sm rounded ">Signup</button>
@@ -206,7 +234,8 @@
 
                 <hr class="hr-text" data-content="OR">
                 <!--Create Button-->
-                <p class="text-center">Already have an Account? <a href="login.html">Signin </a><i class="fas fa-caret-right text-primary"></i></p>
+                <p class="text-center">Already have an Account? <a href="login.html">Signin </a><i
+                        class="fas fa-caret-right text-primary"></i></p>
                 <a href="" class="btn btn-outline-success btn-sm mt-2 w-100">
                     <i class="fab fa-google"></i> Signin with Google
                 </a>
@@ -235,6 +264,26 @@
     <script src="js/bootstrap-drawer.min.js"></script>
     <!-- Custom JS -->
     <script src="js/custom.js"></script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 </body>
 
 </html>
